@@ -52,7 +52,7 @@ func main() {
 	r.Use(middleware.Recoverer)
 	r.Use(middleware.Timeout(60 * time.Second))
 
-	r.Handle("/", caserver.New(c))
+	r.Handle("/*", caserver.New(c))
 
 	adapter := httpadapter.New(r)
 	h := handler{
